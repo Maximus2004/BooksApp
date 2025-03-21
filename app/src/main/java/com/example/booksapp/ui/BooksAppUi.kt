@@ -21,7 +21,8 @@ fun BooksAppUi(booksViewModel: BooksViewModel, modifier: Modifier = Modifier) {
             color = MaterialTheme.colors.background
         ) {
             HomeScreen(
-                booksUiState = booksViewModel.booksUiState
+                booksUiState = booksViewModel.booksUiState,
+                onSearchClick = booksViewModel::getBooks
             )
         }
     }

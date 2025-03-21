@@ -20,13 +20,13 @@ class BooksViewModel(private val booksAppRepository: AppRepository): ViewModel()
         private set
 
     init {
-        getBooks()
+        getBooks("Пушкин")
     }
 
-    fun getBooks() {
+    fun getBooks(search: String) {
         viewModelScope.launch {
             try {
-                val result = booksAppRepository.getBooks()
+                val result = booksAppRepository.getBooks(search) ?: throw IOException()
                 booksUiState = BooksUiState.Success(result)
             } catch (e: IOException) {
                 booksUiState = BooksUiState.Error
